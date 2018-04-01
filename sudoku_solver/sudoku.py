@@ -1,7 +1,13 @@
 from sudoku_solver.csp import Problem, Variable, Constraint
 
 class Sudoku:
-    def __init__(self, data=[]):
+    def __init__(self, data=None):
+        if not data:
+            data = []
+            for i in range(9):
+                data.append([])
+                for j in range(9):
+                    data[i].append(0)
         if not isinstance(data, list) or not len(data) == 9 or not isinstance(data[0], list) or not len(data[0]) == 9:
             raise ValueError("sudoku data must be 2D list of integers")
         self.data = data
